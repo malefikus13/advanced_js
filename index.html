@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>eShop</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<header class="header">
+		<button class="cart-button" type="button">Корзина</button>
+	</header>
+	<main>
+		<div class="goods-list"></div>
+		<div class="lesson_4">
+			<form action="#" method="post" id="test_form">
+				<p class="titleForm">Форма</p>
+				<input class="js-input" type="text" id="name" name="name" placeholder="Имя">
+				<p class="littleTxt">* Имя должно быть только на латинице. Пример: Denis</p>
+				<input class="js-input js-input-phone" type="tel" id="phone" name="phone" placeholder="+7(929)999-9999"
+					pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+				<p class="littleTxt">* Телефон должен иметь следующий вид: +7(929)999-9999</p>
+				<input class="js-input js-input-email" type="text" id="email" name="email" placeholder="mymail@mail.ru">
+				<textarea class="js-input" placeholder="Текст" id="text"></textarea>
+				<input id="submit" type="submit" value="Отправить" />
+			</form>
+		</div>
+	</main>
+	<script src="./js/script.js"></script>
+	<script src="./js/regExp.js"></script>
+</body>
+
+</html>
