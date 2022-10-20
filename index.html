@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>eShop</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<div id="app">
+		<header class="header">
+			<!-- left_sidebar -->
+			<div class="left">
+				<form action="#" class="search-form" @submit.prevent="filter">
+					<input v-model="searchLine" type="text" class="search-field">
+					<button class="btn-search" type="button" @click="filterGoods">
+						Поиск
+					</button>
+					<button class="btn-search" type="reset" @click="cleanText">
+						Очистить
+					</button>
+				</form>
+			</div>
+
+			<!-- center_sidebar -->
+			<div class="center">
+				<p class="">В поиск ввели: " {{ searchLine }} "</p>
+			</div>
+
+			<!-- right_sidebar -->
+			<div class="right">
+				<button class="cart-button" type="button" @click="isVisibleCart = !isVisibleCart">Корзина</button>
+			</div>
+
+			<!-- basket -->
+			<div class="basket_wrapp" v-show="isVisibleCart">
+				<div class="basket_wrapp__colum">
+					<div class="productCard_basket" v-for="item of basketItems" :key="item.id_product">
+						<div class="productCard_basket__box">
+							<div class="name">{{ item.product_name.toUpperCase() }}</div>
+							<div class="price">{{ item.price }} руб.</div>
+						</div>
+						<div class="delete">
+							<button class="btn-delete" type="submit" @click="remove(item)">
+								X
+							</button>
+						</div>
+					</div>
+
+					<div class="goodsNoFound" v-if="!basketItems.length">
+						<p>В КОРЗИНЕ ТОВАР ОТСУТСТВУЕТ</p>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- content_wrapp -->
+		<main>
+			<!-- goods area -->
+			<div class="goods-list">
+				<div class="goods-item" v-for="item of goods" :key="item.id_product">
+					<!-- на всякий случай влючил в состав id, так как он есть в рабочем массиве продуктов, что мы получаем. -->
+					<div class="card">
+						<div class="card__img">
+							<img :src="goodImage" alt="">
+						</div>
+						<div class="card__title">
+							<h3>{{ item.product_name }}</h3>
+						</div>
+						<div class="card__price">
+							<p>Цена:</p>
+							<p>{{ item.price }} pуб.</p>
+						</div>
+						<div class="card__button">
+							<button @click="addProduct(item)">Добавить</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8"></script>
+	<script src="./js/vueScript.js"></script>
+</body>
+
+</html>
